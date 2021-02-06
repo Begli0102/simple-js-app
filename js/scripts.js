@@ -1,3 +1,4 @@
+//first steps of pokemon by adding arrays to objects
 let pokemonList=[
   {name="Bulbasaur", height = 0.7m, types=['grass', 'poison'], weight=6.9kg},
   {name="Pidgeot", height = 1.5m, types=['flying', 'normal'], weight=39.5kg},
