@@ -1,8 +1,8 @@
-//first steps of pokemon by adding arrays to objects
+//added some data to pokemonList 
 let pokemonList=[
-  {name="Bulbasaur", height = 0.7m, types=['grass', 'poison'], weight=6.9kg},
-  {name="Pidgeot", height = 1.5m, types=['flying', 'normal'], weight=39.5kg},
-  {name="Alakazam", height = 1.5m, types=['phychic'], weight=48kg},
-  {name="Charizard", height = 1.7m, types=['flying', 'fire'], weight=90.5kg},
-  {name="Blastoise", height = 1.6m, types=['water'], weight=85.5kg},
-];
+ {name:'Bulbasaur',height: 0.7,types:['grass', 'poison' ],weight:6.9},
+ {name:'Pidgeot',height:1.5,types:['flying', 'normal'],weight:39.5},
+ {name:'Alakazam',height:1.5,types:['phychic'],weight:48},
+ {name:'Charizard',height:1.7,types:['flying', 'fire'],weight:90.5},
+ {name:'Blastoise',height:1.6,types:['water'],weight:85.5}
+]
