@@ -8,8 +8,10 @@ let pokemonList=[
 ]
 for (let i=0; i<pokemonList.length; i++){
   if(pokemonList[i].height>1.5){
-  console.log(pokemonList[i].name + "" + " ( height: " + pokemonList[i].height + ")");
+  document.write(pokemonList[i].name + "" +
+   " ( height: " + pokemonList[i].height + ")");
 } else{
-  console.log(pokemonList[i].name + "" + " (height: " + pokemonList[i].height + ":this pokemon is small)");
+  document.write(pokemonList[i].name + "" +
+  " (height: " + pokemonList[i].height + ":this pokemon is small)");
 }
 }
