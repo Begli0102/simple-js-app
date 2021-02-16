@@ -6,12 +6,22 @@ let pokemonList=[
  {name:'Charizard',height:1.7,types:['flying', 'fire'],weight:90.5},
  {name:'Blastoise',height:1.6,types:['water'],weight:85.5}
 ]
-for (let i=0; i<pokemonList.length; i++){
-  if(pokemonList[i].height>1.5){
-  document.write('<p>' + pokemonList[i].name + "" +
-   " ( height: " + pokemonList[i].height + ")" + '</p>');
-} else{
-  document.write('<p>' + pokemonList[i].name + "" +
-  " (height: " + pokemonList[i].height + ":this pokemon is small)" + '</p>');
-}
-}
+//for (let i=0; i<pokemonList.length; i++){
+  //if(pokemonList[i].height>1.5){
+  //document.write('<p>' + pokemonList[i].name + "" +
+   //" ( height: " + pokemonList[i].height + ")" + '</p>');
+//} else{
+  //document.write('<p>' + pokemonList[i].name + "" +
+  //" (height: " + pokemonList[i].height + ":this pokemon is small)" + '</p>');
+//}
+//}
+//converted for loop into forEach Loop
+pokemonList.forEach(function(eachArray){
+if(eachArray.height>1.5){
+  document.write('<p>' + eachArray.name + "" +
+   " ( height: " + eachArray.height + ")" + '</p>');
+
+}else{
+  document.write('<p>' + eachArray.name + "" +
+  " (height: " + eachArray.height + ": this pokemon is small)" + '</p>');
+}})
