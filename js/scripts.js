@@ -7,17 +7,7 @@ let pokemonList=[
  {name:'Blastoise',height:1.6,types:['water'],weight:85.5}
 ]
 
-//refacored for loop into forEach Loop
 
-pokemonList.forEach(function(eachArray){
-if(eachArray.height>1.5){
-  document.write('<p>' + eachArray.name + "" +
-   " ( height: " + eachArray.height + ")" + '</p>');
-
-}else{
-  document.write('<p>' + eachArray.name + "" +
-  " (height: " + eachArray.height + ": this pokemon is small)" + '</p>');
-}})
 
 // pokemonRepository wraped in IIFE
 
@@ -34,11 +24,32 @@ let pokemonRepository = (function () {
   function getAll() {
     return pokemonList;
   }
+  function addListItem(pokemon){
+  let pokemonList=document.querySelector('.pokemon-list');
+  let listpokemon=document.createElement('li');
+  let button=document.createElement('button');
+  button.innerText=pokemon.name;
+  button.classList.add('button');
+  listpokemon.appendChild(button);
+  pokemonList.appendChild(listpokemon);
+  button.addEventListener("click", function(event){
+  showDetails(pokemon)
+})
+};
+  function showDetails(pokemon){
+    console.log(pokemon);
+  }
   return {
     add: add,
-    getAll: getAll
+    getAll: getAll,
+    addListItem: addListItem
   };
-
 })();
 pokemonRepository.add({name:'Blastoise',height:1.6,types:['water'],weight:85.5});
   console.log(pokemonRepository.getAll());
+
+  //refacored for loop into forEach Loop
+
+  pokemonList.forEach(function(pokemon){
+  pokemonRepository.addListItem(pokemon);
+  });

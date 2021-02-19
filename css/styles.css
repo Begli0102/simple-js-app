@@ -1,0 +1,15 @@
+.button{
+  background-color: tomato;
+  border:1px solid;
+  border-radius: 5%;
+  border-color: black;
+ margin:10px;
+ padding:10px;
+ text-align: center;
+ font-size: 15px;
+  transition-duration: 0.5s;
+ cursor: pointer;
+}
+.button:hover{
+  opacity:0.5;
+}
