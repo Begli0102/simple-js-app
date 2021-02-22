@@ -1,29 +1,25 @@
-//added some data to pokemonList
-let pokemonList=[
- {name:'Bulbasaur',height: 0.7,types:['grass', 'poison' ],weight:6.9},
- {name:'Pidgeot',height:1.5,types:['flying', 'normal'],weight:39.5},
- {name:'Alakazam',height:1.5,types:['phychic'],weight:48},
- {name:'Charizard',height:1.7,types:['flying', 'fire'],weight:90.5},
- {name:'Blastoise',height:1.6,types:['water'],weight:85.5}
-]
 
 
 
 // pokemonRepository wraped in IIFE
 
 let pokemonRepository = (function () {
-  let pokemonList = [
- {name:'Bulbasaur',height: 0.7,types:['grass', 'poison' ],weight:6.9},
- {name:'Pidgeot',height:1.5,types:['flying', 'normal'],weight:39.5},
- {name:'Alakazam',height:1.5,types:['phychic'],weight:48},
- {name:'Charizard',height:1.7,types:['flying', 'fire'],weight:90.5},
- ];
+  let pokemonList = [];
+  let apiUrl='https://pokeapi.co/api/v2/pokemon/?limit=20';
+
+//function to add pokemon
+
   function add(pokemon) {
      pokemonList.push(pokemon);
   }
+
+  //function to get pokemons in Array
+
   function getAll() {
     return pokemonList;
   }
+
+  //function to create a button and display pokemons
   function addListItem(pokemon){
   let pokemonList=document.querySelector('.pokemon-list');
   let listpokemon=document.createElement('li');
@@ -33,23 +29,69 @@ let pokemonRepository = (function () {
   listpokemon.appendChild(button);
   pokemonList.appendChild(listpokemon);
   button.addEventListener("click", function(event){
-  showDetails(pokemon)
-})
-};
+  showDetails(pokemon);
+});
+}
+
+//function to displaz the details of a pokemon when it is clicked
   function showDetails(pokemon){
     console.log(pokemon);
   }
+
+//function to load pokemonList using fetch
+
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      //  console.log(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+//function to load the details
+  function loadDetails(item) {
+      let url = item.detailsUrl;
+      return fetch(url).then(function (response) {
+        return response.json();
+      }).then(function (details) {
+        // Now we add the details to the item
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      }).catch(function (e) {
+        console.error(e);
+      });
+    }
+
+//loging the detail of each clicked pokemon
+    function showDetails(item) {
+        pokemonRepository.loadDetails(item).then(function () {
+          console.log(item);
+        });
+      }
+
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList:loadList,
+    loadDetails:loadDetails,
+    showDetails:showDetails
   };
 })();
-pokemonRepository.add({name:'Blastoise',height:1.6,types:['water'],weight:85.5});
-  console.log(pokemonRepository.getAll());
 
   //refacored for loop into forEach Loop
-
-  pokemonList.forEach(function(pokemon){
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function(pokemon){
   pokemonRepository.addListItem(pokemon);
   });
+});
