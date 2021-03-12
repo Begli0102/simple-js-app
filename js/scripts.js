@@ -3,7 +3,7 @@
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl='https://pokeapi.co/api/v2/pokemon/?limit=20';
-  let modalContainer = document.querySelector('#modal-container');
+  // let modalContainer = document.querySelector('#modal-container');
 
 //function to add pokemon
 
@@ -22,17 +22,16 @@ let pokemonRepository = (function () {
   function addListItem(pokemon) {
 
   let pokemonList=document.querySelector('.pokemon-list');
-  pokemonList.classList.add('list-group')
+  pokemonList.classList.add('list-group','lg')
   let listpokemon=document.createElement('li');
-  listpokemon.classList.add('list-group-item')
+  listpokemon.classList.add('list-group-item');
+  listpokemon.classList.add('list-group-item-action');
+  listpokemon.classList.add('list-group-item-light');
+  listpokemon.classList.add('shadow-lg','bg-body','rounded');
   let button=document.createElement('button');
   button.innerText=pokemon.name;
   button.classList.add('button');
   button.classList.add('btn');
-  // button.classList.add('btn-primary');
-  button.classList.add('btn','btn-outline-success','btn-block');
-  // button.classList.add('btn','primary-btn-md-btn-block');
-  button.classList.add('text-body');
   button.classList.add('text-capitalize');
   button.setAttribute("data-target","#exampleModal");
   button.setAttribute("data-toggle", "modal");
@@ -139,21 +138,7 @@ let pokemonRepository = (function () {
         modalBody.append(pokemonWeight);
 
 
-          function addEventListener(button) {
-          button.addEventListener('click', function() {
-              showDetails(item);
-          });
-
-      }
 }
-
-          // hiding a modal by clicking close button, empty place or escape button
-
-           function hideModal() {
-           let modalContainer = document.querySelector('#modal-container');
-           modalContainer.classList.remove('is-visible');
-         }
-
 
   return {
     add: add,
@@ -162,8 +147,7 @@ let pokemonRepository = (function () {
     loadList:loadList,
     loadDetails:loadDetails,
     showDetails:showDetails,
-    showModal:showModal,
-    hideModal:hideModal
+
   };
 })();
 
