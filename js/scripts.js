@@ -1,9 +1,10 @@
+
 //  pokemonRepository wraped in IIFE
 
 let pokemonRepository = (function () {
   let pokemonList = [];
   let apiUrl='https://pokeapi.co/api/v2/pokemon/?limit=20';
-  // let modalContainer = document.querySelector('#modal-container');
+
 
 //function to add pokemon
 
@@ -55,12 +56,12 @@ let pokemonRepository = (function () {
           detailsUrl: item.url
         };
         add(pokemon);
-      //  console.log(pokemon);
       });
     }).catch(function (e) {
       console.error(e);
     })
   }
+
 
 //function to load the details
   function loadDetails(item) {
@@ -79,6 +80,7 @@ let pokemonRepository = (function () {
         console.error(e);
       });
     }
+
 
 //loging the detail of each clicked pokemon
     function showDetails(item) {
