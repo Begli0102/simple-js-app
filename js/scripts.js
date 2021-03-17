@@ -63,6 +63,7 @@ let pokemonRepository = (function () {
   }
 
 
+
 //function to load the details
   function loadDetails(item) {
       let url = item.detailsUrl;
@@ -80,6 +81,30 @@ let pokemonRepository = (function () {
         console.error(e);
       });
     }
+
+        // created search function in which by typing first letter the name of a pokemon can be found
+
+        document.getElementsByClassName('form-control')[0].addEventListener('keyup',function(){
+      search()
+
+
+        });
+
+       function search(){
+         let list=document.querySelectorAll('li.list-group-item');
+         let value=document.getElementsByClassName('form-control')[0].value.toLowerCase()
+         for (var i = 0; i < list.length; i++) {
+
+           const pokemonName=list[i].querySelector('button').innerText.toLowerCase()
+
+           if (pokemonName.indexOf(value)>-1) {
+             list[i].style.display=''
+           }else{
+             list[i].style.display='none';
+           }
+         }
+
+       }
 
 
 //loging the detail of each clicked pokemon
