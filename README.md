@@ -1,7 +1,6 @@
 # Pokédex
  This is a small web application with HTML, CSS, and JavaScript that loads data from an external API and enables the viewing of data points in detail.
 
-![main view](https://pokedex12.netlify.app/portfolio-website\simple-js-app\img/main view.png)
 
 ## Key Features
 - Load data from an external source (API) 
